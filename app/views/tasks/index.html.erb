@@ -1,0 +1,14 @@
+<h1>My tasks</h1>
+<ul>
+  <% @tasks.each do |task| %>
+  <% condition = "checked" if task.completed == true %>
+  <li>
+    <input type="checkbox"<%= condition %>>
+    <%= link_to task['title'], task_path(task['id']) %>
+  </li>
+  <%= link_to 'Destroy', task_path(task['id']),
+            data: {:confirm => 'Are you sure?'}, :method => :delete %>
+  <% end %>
+</ul>
+
+<a href="http://localhost:3000/tasks/new"> Add a new task</a>
